@@ -3,6 +3,7 @@ import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const CreateBooks = () => {
   const [title, setTitle] = useState('');
@@ -10,6 +11,7 @@ const CreateBooks = () => {
   const [publishYear, setPublishYear] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar();
 
  const handleSaveBook = () => {
   //  Optional: Input validation
@@ -36,11 +38,13 @@ const CreateBooks = () => {
     .post('http://localhost:3000/books', data)
     .then(() => {
       setLoading(false);
+      enqueueSnackbar("Book Created successfully !",{variant:'success'})
       navigate('/'); // redirect to home after successful save
     })
     .catch((error) => {
       setLoading(false);
-      alert('An error happened. Please check console');
+      // alert('An error happened. Please check console');
+      enqueueSnackbar('Error', {variant:'error'});
       console.log(error.response?.data || error.message); // shows backend validation error
     });
 };
@@ -48,8 +52,11 @@ const CreateBooks = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
-      <h1 className='text-3xl my-4'>Create Book</h1>
+      <BackButton /> 
+      <h1 className='text-3xl my-4 underline-offset-4 underline'>📚Create Book📖</h1>
+
+      {/* {loading ? <Spinner/> : ''} */}
+
       {loading && <Spinner />}
 
       <div className='flex flex-col border-2 border-sky-500 rounded-xl w-[600px] p-4 mx-auto'>
