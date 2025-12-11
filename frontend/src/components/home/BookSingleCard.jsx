@@ -10,15 +10,16 @@ import BookModal from "./BookModal";
 const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
 
+
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-200 shadow-xl rounded-2xl p-6 m-4 border border-gray-300 hover:shadow-3xl transition duration-300 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-200 shadow-xl rounded-2xl p-6 m-4 border border-gray-500 hover:shadow-3xl transition duration-300 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-2 rounded-t-2xl"></div>
 
-      <h2 className="absolute top-3 right-3 border-1 text-gray-500 px-3 py-1 rounded-full text-xs font-bold shadow-md">
+      <h2 className="absolute top-3 right-3 border-1 text-gray-900 px-3 py-1 rounded-full text-xs font-bold shadow-md">
         {book.publishYear}
       </h2>
 
-      <h4 className="text-gray-500 text-sm mb-3 tracking-wide">ID: {book.id}</h4>
+      <h4 className="text-gray-500 text-sm mb-3 tracking-wide">ID: {book._id}</h4>
 
       <div className="flex items-center gap-3 mb-4">
         <div className="bg-gray-400 p-3 rounded-lg flex items-center justify-center shadow-md">
@@ -40,7 +41,7 @@ const BookSingleCard = ({ book }) => {
           onClick={() => setShowModal(true)}
         />
 
-        <Link to={`/books/details/${book.id}`}>
+        <Link to={`/books/details/${book._id}`}>
           <BsInfoCircle className="text-green-500 hover:text-gray-900 hover:scale-110 transition" />
         </Link>
 

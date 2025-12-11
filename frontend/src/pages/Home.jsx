@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import bookImg from "../assets/books1.jpg";
+import imagebook from "../assets/finalok.png"
 
 import BookTable from "../components/home/BooksTable";
 import BooksCard from "../components/home/BooksCard";
@@ -31,10 +33,14 @@ const Home = () => {
   return (
     <div className="p-4">
 
-      {/* View Switcher */}
      <div className="flex justify-center items-center gap-x-6 my-4">
+  <img
+    // src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop"
+    src={imagebook}
+    alt="Open book"
+    className="w-28 h-20 object-cover rounded-lg shadow-md hidden sm:block"
+  />
 
-  {/* TABLE BUTTON */}
   <button
     onClick={() => setShowType("table")}
     className={`px-6 py-2 rounded-xl font-semibold flex items-center gap-2 shadow-md transition-all duration-300
@@ -46,7 +52,6 @@ const Home = () => {
     📋 Table View
   </button>
 
-  {/* CARD BUTTON */}
   <button
     onClick={() => setShowType("card")}
     className={`px-6 py-2 rounded-xl font-semibold flex items-center gap-2 shadow-md transition-all duration-300
@@ -58,21 +63,23 @@ const Home = () => {
     🗂️ Card View
   </button>
 
+  <img
+    // src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop"
+    src={bookImg}
+    alt="Open book"
+    className="w-28 h-20 object-cover rounded-lg shadow-md hidden sm:block"
+  />
+
 </div>
-
-
-      {/* Heading + Add Book */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl my-8 underline decoration-4 underline-offset-4">
-          📖Books List📚
-        </h1>
+  <div className="flex justify-between items-center">
+    <h1 className="text-3xl my-8 underline decoration-4 underline-offset-4">
+      📖Books List📚
+    </h1>
 
         <Link to="/books/create">
           <MdOutlineAddBox className="text-sky-700 text-4xl" />
         </Link>
       </div>
-
-      {/* Display Books */}
       {loading ? (
         <Spinner />
       ) : showType === "table" ? (
