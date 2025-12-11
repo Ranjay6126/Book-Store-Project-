@@ -12,10 +12,10 @@ const BookSingleCard = ({ book }) => {
 
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-200 shadow-xl rounded-2xl p-6 m-4 border border-gray-500 hover:shadow-3xl transition duration-300 relative overflow-hidden">
+    <div className="bg-linear-to-br from-gray-50 to-gray-200 shadow-xl rounded-2xl p-6 m-4 border border-gray-500 hover:shadow-3xl transition duration-300 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-2 rounded-t-2xl"></div>
 
-      <h2 className="absolute top-3 right-3 border-1 text-gray-900 px-3 py-1 rounded-full text-xs font-bold shadow-md">
+      <h2 className="absolute top-3 right-3 border text-gray-900 px-3 py-1 rounded-full text-xs font-bold shadow-md">
         {book.publishYear}
       </h2>
 

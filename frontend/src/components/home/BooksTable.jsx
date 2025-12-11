@@ -10,7 +10,7 @@ const BooksTable = ({ books }) => {
         
         {/* Header */}
         <thead>
-          <tr className="bg-gradient-to-r from-sky-600 to-blue-700 text-white">
+          <tr className="bg-linear-to-r from-sky-600 to-blue-700 text-white">
             <th className="px-5 py-4 border-b border-blue-800 text-center tracking-wide">
               NO
             </th>
