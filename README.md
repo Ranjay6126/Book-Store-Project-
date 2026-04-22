@@ -91,12 +91,6 @@ npm run dev
 
 ---
 
-## License
-
-Internal Use Only
-
----
-
 ⭐ If you find this project useful, consider giving it a star on GitHub..
 
 
