@@ -1,15 +1,16 @@
-import {Link} from 'react-router-dom';
-import { BsArrowLeft } from 'react-icons/bs';
+import { Link } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 
-const BackButton = ({destination = '/'}) => {
+const BackButton = ({ destination = "/", label = "Back" }) => {
   return (
-    <div className='flex'>
-        <Link to={destination}
-        className='bg-sky-600 text-white px-4 py-1 rounded-lg w-fit'>
-            <BsArrowLeft className='text-2xl'/>
-        </Link>
-    </div>
-  )
-}
+    <Link
+      to={destination}
+      className="btn-ghost group animate-fade-in w-fit px-5 text-sm"
+    >
+      <BsArrowLeft className="text-lg transition-transform duration-300 group-hover:-translate-x-1" />
+      {label}
+    </Link>
+  );
+};
 
-export default BackButton
+export default BackButton;
