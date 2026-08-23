@@ -10,22 +10,22 @@ const Spinner = ({ label = "Loading books…" }) => {
     >
       <div className="relative h-16 w-16">
         {/* soft halo */}
-        <span className="absolute inset-0 rounded-full bg-emerald-400/45 blur-xl" />
+        <span className="absolute inset-0 rounded-full bg-indigo-500/25 blur-xl" />
 
         {/* outer ring */}
-        <span className="animate-spin-slow absolute inset-0 rounded-full border-2 border-emerald-950/15 border-t-mint-500 border-r-blush-300" />
+        <span className="animate-spin-slow absolute inset-0 rounded-full border-2 border-white/10 border-t-indigo-400 border-r-fuchsia-400" />
 
         {/* inner counter ring */}
         <span
-          className="animate-spin-slow absolute inset-3 rounded-full border-2 border-emerald-950/15 border-b-accent-400"
+          className="animate-spin-slow absolute inset-3 rounded-full border-2 border-white/10 border-b-sky-400"
           style={{ animationDirection: "reverse", animationDuration: "1s" }}
         />
 
         {/* core */}
-        <span className="absolute inset-[38%] rounded-full bg-linear-to-br from-mint-400 to-blush-300 shadow-[0_0_18px_rgba(80,200,120,0.9)]" />
+        <span className="absolute inset-[38%] rounded-full bg-linear-to-br from-indigo-400 to-fuchsia-400 shadow-[0_0_18px_rgba(129,140,248,0.9)]" />
       </div>
 
-      <p className="text-sm font-medium tracking-wide text-emerald-950/70">{label}</p>
+      <p className="text-sm font-medium tracking-wide text-slate-400">{label}</p>
     </div>
   );
 };
@@ -62,7 +62,7 @@ export const CardSkeleton = ({ count = 8 }) => (
 export const TableSkeleton = ({ rows = 6 }) => (
   <div className="glass overflow-hidden rounded-2xl">
     <div className="skeleton h-14 w-full rounded-none" />
-    <div className="divide-y divide-emerald-950/10">
+    <div className="divide-y divide-white/5">
       {Array.from({ length: rows }).map((_, i) => (
         <div
           key={i}

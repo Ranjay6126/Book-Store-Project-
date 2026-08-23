@@ -8,11 +8,11 @@ import BookModal from "./BookModal";
 
 /* Deterministic accent per row so colours stay stable between renders */
 const ACCENTS = [
-  "from-mint-500 to-teal-600",
-  "from-pink-400 to-rose-500",
-  "from-accent-400 to-amber-500",
-  "from-lime-500 to-mint-600",
-  "from-rose-400 to-pink-600",
+  "from-indigo-400 to-violet-500",
+  "from-sky-400 to-cyan-500",
+  "from-fuchsia-400 to-pink-500",
+  "from-emerald-400 to-teal-500",
+  "from-amber-400 to-orange-500",
 ];
 
 const initials = (title = "") =>
@@ -33,7 +33,7 @@ const BooksTable = ({ books }) => {
         <table className="w-full border-collapse text-left text-sm">
           {/* ---------------- Header ---------------- */}
           <thead>
-            <tr className="bg-linear-to-r from-mint-400/35 via-blush-300/40 to-accent-400/45 backdrop-blur-sm">
+            <tr className="bg-linear-to-r from-indigo-600/30 via-violet-600/25 to-fuchsia-600/20 backdrop-blur-sm">
               <Th className="w-20 text-center">No</Th>
               <Th>Title</Th>
               <Th className="max-md:hidden">Author</Th>
@@ -43,16 +43,16 @@ const BooksTable = ({ books }) => {
           </thead>
 
           {/* ---------------- Body ---------------- */}
-          <tbody className="divide-y divide-emerald-950/10">
+          <tbody className="divide-y divide-white/6">
             {books.map((book, index) => (
               <tr
                 key={book._id}
-                className="animate-fade-up group transition-colors duration-300 hover:bg-white/45"
+                className="animate-fade-up group transition-colors duration-300 hover:bg-white/6"
                 style={{ animationDelay: `${Math.min(index, 12) * 45}ms` }}
               >
                 {/* index */}
                 <td className="px-5 py-4 text-center">
-                  <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-white/70 text-xs font-bold text-slate-700 ring-1 ring-emerald-950/10 tabular-nums transition group-hover:ring-mint-500/50">
+                  <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-white/6 text-xs font-bold text-slate-300 ring-1 ring-white/10 tabular-nums transition group-hover:ring-indigo-400/40">
                     {index + 1}
                   </span>
                 </td>
@@ -98,28 +98,28 @@ const BooksTable = ({ books }) => {
                     <IconAction
                       onClick={() => setPreviewBook(book)}
                       title="Preview book"
-                      className="text-mint-700 hover:bg-mint-500/20 hover:ring-mint-500/50"
+                      className="text-indigo-200 hover:bg-indigo-500/20 hover:ring-indigo-400/50"
                     >
                       <BiShow />
                     </IconAction>
                     <LinkAction
                       to={`/books/details/${book._id}`}
                       title="View details"
-                      className="text-pink-700 hover:bg-pink-400/25 hover:ring-pink-500/50"
+                      className="text-emerald-300 hover:bg-emerald-500/20 hover:ring-emerald-400/50"
                     >
                       <BsInfoCircle />
                     </LinkAction>
                     <LinkAction
                       to={`/books/edit/${book._id}`}
                       title="Edit book"
-                      className="text-amber-700 hover:bg-amber-400/25 hover:ring-amber-500/50"
+                      className="text-amber-300 hover:bg-amber-500/20 hover:ring-amber-400/50"
                     >
                       <AiOutlineEdit />
                     </LinkAction>
                     <LinkAction
                       to={`/books/delete/${book._id}`}
                       title="Delete book"
-                      className="text-rose-700 hover:bg-rose-500/20 hover:ring-rose-500/50"
+                      className="text-rose-300 hover:bg-rose-500/20 hover:ring-rose-400/50"
                     >
                       <MdOutlineDelete />
                     </LinkAction>
@@ -139,7 +139,7 @@ const BooksTable = ({ books }) => {
 const Th = ({ children, className = "" }) => (
   <th
     scope="col"
-    className={`px-5 py-4 text-[11px] font-semibold tracking-[0.14em] text-emerald-950/80 uppercase ${className}`}
+    className={`px-5 py-4 text-[11px] font-semibold tracking-[0.14em] text-indigo-100/90 uppercase ${className}`}
   >
     {children}
   </th>
@@ -151,7 +151,7 @@ const IconAction = ({ onClick, title, className, children }) => (
     onClick={onClick}
     title={title}
     aria-label={title}
-    className={`grid h-9 w-9 place-items-center rounded-lg bg-emerald-950/5 text-base ring-1 ring-emerald-950/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
+    className={`grid h-9 w-9 place-items-center rounded-lg bg-white/5 text-base ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
   >
     {children}
   </button>
@@ -162,7 +162,7 @@ const LinkAction = ({ to, title, className, children }) => (
     to={to}
     title={title}
     aria-label={title}
-    className={`grid h-9 w-9 place-items-center rounded-lg bg-emerald-950/5 text-base ring-1 ring-emerald-950/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
+    className={`grid h-9 w-9 place-items-center rounded-lg bg-white/5 text-base ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
   >
     {children}
   </Link>

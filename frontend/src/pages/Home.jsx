@@ -84,26 +84,26 @@ const Home = () => {
           icon={<PiBooksDuotone />}
           value={stats.total}
           label="Books in library"
-          tint="from-mint-500/30 to-mint-500/0"
-          ring="ring-mint-600/30"
-          iconColor="text-mint-700"
+          tint="from-indigo-500/25 to-indigo-500/0"
+          ring="ring-indigo-400/30"
+          iconColor="text-indigo-300"
         />
         <StatCard
           icon={<PiUsersThreeDuotone />}
           value={stats.authors}
           label="Unique authors"
-          tint="from-blush-300/45 to-blush-300/0"
-          ring="ring-blush-500/40"
-          iconColor="text-pink-700"
+          tint="from-fuchsia-500/25 to-fuchsia-500/0"
+          ring="ring-fuchsia-400/30"
+          iconColor="text-fuchsia-300"
           delay="90ms"
         />
         <StatCard
           icon={<TbCalendarStats />}
           value={stats.newest}
           label="Latest publish year"
-          tint="from-accent-400/40 to-accent-400/0"
-          ring="ring-amber-500/40"
-          iconColor="text-amber-700"
+          tint="from-sky-500/25 to-sky-500/0"
+          ring="ring-sky-400/30"
+          iconColor="text-sky-300"
           delay="180ms"
         />
       </section>
@@ -118,15 +118,15 @@ const Home = () => {
       >
         {/* Heading */}
         <div className="flex items-center gap-3">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-linear-to-br from-mint-400/45 to-blush-300/50 ring-1 ring-white/70">
-            <PiBooksDuotone className="text-2xl text-emerald-900" />
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-linear-to-br from-indigo-500/30 to-fuchsia-500/20 ring-1 ring-white/15">
+            <PiBooksDuotone className="text-2xl text-indigo-200" />
           </span>
 
           <div>
             <h1 className="text-gradient text-2xl font-bold tracking-tight sm:text-3xl">
               Books List
             </h1>
-            <p className="mt-0.5 text-sm text-emerald-950/70">
+            <p className="mt-0.5 text-sm text-slate-400">
               {loading
                 ? "Fetching your collection…"
                 : `${visibleBooks.length} of ${stats.total} ${
@@ -171,7 +171,7 @@ const Home = () => {
         style={{ animationDelay: "180ms" }}
       >
         <div className="relative flex-1">
-          <HiOutlineSearch className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-emerald-900/50" />
+          <HiOutlineSearch className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-slate-500" />
           <input
             type="search"
             value={query}
@@ -185,7 +185,7 @@ const Home = () => {
               type="button"
               onClick={() => setQuery("")}
               aria-label="Clear search"
-              className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1.5 text-emerald-950/60 transition hover:bg-emerald-950/10 hover:text-emerald-950"
+              className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
             >
               <IoClose />
             </button>
@@ -193,7 +193,7 @@ const Home = () => {
         </div>
 
         <div className="relative sm:w-60">
-          <TbArrowsSort className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-emerald-900/50" />
+          <TbArrowsSort className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-slate-500" />
           <select
             value={sortKey}
             onChange={(e) => setSortKey(e.target.value)}
@@ -201,12 +201,12 @@ const Home = () => {
             className="field cursor-pointer appearance-none pr-10 pl-11"
           >
             {Object.entries(SORTS).map(([key, { label }]) => (
-              <option key={key} value={key} className="bg-white text-emerald-950">
+              <option key={key} value={key} className="bg-ink-900 text-slate-100">
                 {label}
               </option>
             ))}
           </select>
-          <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-emerald-900/60">
+          <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-slate-500">
             ▾
           </span>
         </div>
@@ -273,12 +273,12 @@ const StatCard = ({ icon, value, label, tint, ring, iconColor, delay = "0ms" }) 
     />
     <div className="relative flex items-center gap-4">
       <span
-        className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/60 text-2xl ring-1 ${ring} ${iconColor}`}
+        className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/8 text-2xl ring-1 ${ring} ${iconColor}`}
       >
         {icon}
       </span>
       <div>
-        <p className="text-2xl font-bold text-emerald-950 tabular-nums">{value}</p>
+        <p className="text-2xl font-bold text-white tabular-nums">{value}</p>
         <p className="eyebrow mt-0.5">{label}</p>
       </div>
     </div>
@@ -293,8 +293,8 @@ const ViewTab = ({ active, onClick, icon, label }) => (
     onClick={onClick}
     className={`relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 sm:px-5 ${
       active
-        ? "bg-linear-to-r from-mint-600 to-teal-500 text-white shadow-[0_10px_24px_-10px_rgba(18,138,76,0.7),inset_0_1px_0_0_rgba(255,255,255,0.25)]"
-        : "text-emerald-950/60 hover:bg-white/60 hover:text-emerald-950"
+        ? "bg-linear-to-r from-indigo-600 to-violet-600 text-white shadow-[0_10px_24px_-10px_rgba(124,58,237,0.9),inset_0_1px_0_0_rgba(255,255,255,0.25)]"
+        : "text-slate-400 hover:bg-white/8 hover:text-white"
     }`}
   >
     {icon}
@@ -307,14 +307,14 @@ const EmptyState = ({ icon, title, body, action, danger = false }) => (
     <span
       className={`grid h-20 w-20 place-items-center rounded-2xl text-4xl ring-1 ${
         danger
-          ? "bg-red-500/15 text-red-600 ring-red-400/40"
-          : "bg-mint-400/20 text-mint-700 ring-mint-500/35"
+          ? "bg-red-500/12 text-red-300 ring-red-400/30"
+          : "bg-indigo-500/12 text-indigo-300 ring-indigo-400/30"
       }`}
     >
       {icon}
     </span>
-    <h3 className="mt-6 text-xl font-semibold text-emerald-950">{title}</h3>
-    <p className="mt-2 max-w-md text-sm leading-relaxed text-emerald-950/70">{body}</p>
+    <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
+    <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">{body}</p>
     {action && <div className="mt-7">{action}</div>}
   </div>
 );

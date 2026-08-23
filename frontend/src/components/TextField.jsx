@@ -24,14 +24,14 @@ const TextField = ({
     <div>
       <label
         htmlFor={id}
-        className="mb-2 block text-sm font-semibold text-emerald-950/80"
+        className="mb-2 block text-sm font-semibold text-slate-300"
       >
         {label}
       </label>
 
       <div className="relative">
         {icon && (
-          <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-emerald-900/50">
+          <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-lg text-slate-500">
             {icon}
           </span>
         )}
@@ -55,14 +55,14 @@ const TextField = ({
         <p
           id={errorId}
           role="alert"
-          className="animate-fade-in mt-2 flex items-center gap-1.5 text-xs font-medium text-rose-600"
+          className="animate-fade-in mt-2 flex items-center gap-1.5 text-xs font-medium text-rose-300"
         >
           <MdErrorOutline className="shrink-0 text-sm" />
           {error}
         </p>
       ) : (
         hint && (
-          <p id={hintId} className="mt-2 text-xs text-emerald-950/55">
+          <p id={hintId} className="mt-2 text-xs text-slate-500">
             {hint}
           </p>
         )
