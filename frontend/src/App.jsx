@@ -24,8 +24,8 @@ const App = () => {
         </Routes>
       </main>
 
-      <footer className="border-t border-white/8 py-7">
-        <p className="text-center text-xs text-slate-500">
+      <footer className="border-t border-emerald-950/15 py-7">
+        <p className="text-center text-xs text-emerald-950/60">
           Created by Ranjay Prajapati
         </p>
       </footer>

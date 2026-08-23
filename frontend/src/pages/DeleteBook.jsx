@@ -85,8 +85,8 @@ const DeleteBook = () => {
           <span className="grid h-16 w-16 place-items-center rounded-2xl bg-red-500/12 text-3xl text-red-300 ring-1 ring-red-400/30">
             <MdErrorOutline />
           </span>
-          <h3 className="mt-5 text-lg font-semibold text-white">Not available</h3>
-          <p className="mt-2 text-sm text-slate-400">{error}</p>
+          <h3 className="mt-5 text-lg font-semibold text-emerald-950">Not available</h3>
+          <p className="mt-2 text-sm text-emerald-950/70">{error}</p>
           <Link to="/" className="btn-ghost mt-6 text-sm">
             Back to library
           </Link>
@@ -104,13 +104,13 @@ const DeleteBook = () => {
             />
 
             {/* warning banner */}
-            <div className="relative flex items-start gap-3 border-b border-white/10 bg-rose-500/10 p-6 sm:px-9">
-              <HiOutlineExclamationTriangle className="mt-0.5 shrink-0 text-2xl text-rose-300" />
+            <div className="relative flex items-start gap-3 border-b border-emerald-950/10 bg-rose-500/10 p-6 sm:px-9">
+              <HiOutlineExclamationTriangle className="mt-0.5 shrink-0 text-2xl text-rose-600" />
               <div>
-                <p className="font-semibold text-rose-100">
+                <p className="font-semibold text-rose-900">
                   You're about to delete this book
                 </p>
-                <p className="mt-1 text-sm text-rose-200/70">
+                <p className="mt-1 text-sm text-rose-800/80">
                   The record below will be removed from your library permanently.
                 </p>
               </div>
@@ -122,37 +122,37 @@ const DeleteBook = () => {
                 icon={<PiBookOpenTextLight />}
                 label="Title"
                 value={book.title}
-                iconColor="text-indigo-300"
+                iconColor="text-mint-700"
               />
               <Row
                 icon={<BiUserCircle />}
                 label="Author"
                 value={book.author}
-                iconColor="text-sky-300"
+                iconColor="text-pink-700"
               />
               <Row
                 icon={<TbCalendarStats />}
                 label="Publish year"
                 value={book.publishYear}
-                iconColor="text-fuchsia-300"
+                iconColor="text-amber-700"
               />
 
               {/* acknowledgement */}
-              <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-xl bg-white/4 px-4 py-3.5 ring-1 ring-white/8 transition hover:bg-white/6">
+              <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-xl bg-emerald-950/[0.04] px-4 py-3.5 ring-1 ring-emerald-950/10 transition hover:bg-emerald-950/[0.07]">
                 <input
                   type="checkbox"
                   checked={acknowledged}
                   onChange={(e) => setAcknowledged(e.target.checked)}
                   className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-rose-500"
                 />
-                <span className="text-sm text-slate-300">
+                <span className="text-sm text-emerald-950/80">
                   I understand this action is permanent and cannot be undone.
                 </span>
               </label>
             </div>
 
             {/* actions */}
-            <div className="flex flex-wrap items-center gap-3 border-t border-white/10 p-7 pt-6 sm:px-9">
+            <div className="flex flex-wrap items-center gap-3 border-t border-emerald-950/10 p-7 pt-6 sm:px-9">
               <button
                 type="button"
                 onClick={handleDelete}
@@ -189,15 +189,15 @@ const DeleteBook = () => {
 };
 
 const Row = ({ icon, label, value, iconColor }) => (
-  <div className="flex items-start gap-3 rounded-xl bg-white/4 px-4 py-3.5 ring-1 ring-white/8">
+  <div className="flex items-start gap-3 rounded-xl bg-emerald-950/[0.04] px-4 py-3.5 ring-1 ring-emerald-950/10">
     <span
-      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white/6 text-xl ring-1 ring-white/10 ${iconColor}`}
+      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white/70 text-xl ring-1 ring-emerald-950/10 ${iconColor}`}
     >
       {icon}
     </span>
     <div className="min-w-0">
       <p className="eyebrow">{label}</p>
-      <p className="mt-0.5 text-sm font-semibold text-slate-100">{value}</p>
+      <p className="mt-0.5 text-sm font-semibold text-slate-800">{value}</p>
     </div>
   </div>
 );

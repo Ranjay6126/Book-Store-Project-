@@ -3,9 +3,9 @@
  */
 const PageHeading = ({ icon, eyebrow, title, subtitle, tone = "indigo" }) => {
   const tones = {
-    indigo: "from-indigo-500 to-violet-600 shadow-indigo-500/40",
+    indigo: "from-mint-500 to-teal-600 shadow-mint-500/40",
     amber: "from-amber-500 to-orange-600 shadow-amber-500/40",
-    emerald: "from-emerald-500 to-teal-600 shadow-emerald-500/40",
+    emerald: "from-mint-400 to-teal-600 shadow-mint-400/40",
     rose: "from-rose-500 to-red-600 shadow-rose-500/40",
   };
 
@@ -23,7 +23,7 @@ const PageHeading = ({ icon, eyebrow, title, subtitle, tone = "indigo" }) => {
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-1.5 max-w-xl text-sm text-slate-400">{subtitle}</p>
+          <p className="mt-1.5 max-w-xl text-sm text-emerald-950/70">{subtitle}</p>
         )}
       </div>
     </div>

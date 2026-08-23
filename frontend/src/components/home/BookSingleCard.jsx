@@ -9,11 +9,11 @@ import { TbBooks } from "react-icons/tb";
 import BookModal from "./BookModal";
 
 const ACCENTS = [
-  { spine: "from-indigo-400 to-violet-500", glow: "group-hover:shadow-indigo-500/40" },
-  { spine: "from-sky-400 to-cyan-500", glow: "group-hover:shadow-sky-500/40" },
-  { spine: "from-fuchsia-400 to-pink-500", glow: "group-hover:shadow-fuchsia-500/40" },
-  { spine: "from-emerald-400 to-teal-500", glow: "group-hover:shadow-emerald-500/40" },
-  { spine: "from-amber-400 to-orange-500", glow: "group-hover:shadow-amber-500/40" },
+  { spine: "from-mint-500 to-teal-600", glow: "group-hover:shadow-mint-500/40" },
+  { spine: "from-pink-400 to-rose-500", glow: "group-hover:shadow-pink-500/40" },
+  { spine: "from-accent-400 to-amber-500", glow: "group-hover:shadow-amber-500/40" },
+  { spine: "from-lime-500 to-mint-600", glow: "group-hover:shadow-lime-500/40" },
+  { spine: "from-rose-400 to-pink-600", glow: "group-hover:shadow-pink-500/40" },
 ];
 
 const BookSingleCard = ({ book, index = 0 }) => {
@@ -44,7 +44,7 @@ const BookSingleCard = ({ book, index = 0 }) => {
             <p className="eyebrow truncate" title={book._id}>
               ID {String(book._id).slice(-8)}
             </p>
-            <span className="shrink-0 rounded-full bg-linear-to-r from-indigo-500/25 to-fuchsia-500/25 px-3 py-1 text-xs font-bold text-indigo-100 ring-1 ring-white/15 tabular-nums">
+            <span className="shrink-0 rounded-full bg-linear-to-r from-mint-500/25 to-blush-300/45 px-3 py-1 text-xs font-bold text-emerald-900 ring-1 ring-white/60 tabular-nums">
               {book.publishYear}
             </span>
           </div>
@@ -58,31 +58,31 @@ const BookSingleCard = ({ book, index = 0 }) => {
             )}
             <div className="min-w-0">
               <h2 className="line-clamp-2 text-lg leading-snug font-bold tracking-tight text-white" title={book.title}>{book.title}</h2>
-              {book.genre && <p className="mt-2 text-xs font-semibold tracking-wide text-indigo-200 uppercase">{book.genre}</p>}
-              {book.pages && <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-400"><TbBooks /> {book.pages} pages</p>}
+              {book.genre && <p className="mt-2 text-xs font-semibold tracking-wide text-emerald-800 uppercase">{book.genre}</p>}
+              {book.pages && <p className="mt-2 flex items-center gap-1.5 text-xs text-emerald-950/70"><TbBooks /> {book.pages} pages</p>}
             </div>
           </div>
 
           {/* author */}
           <div className="mt-4 flex items-center gap-3">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/5 ring-1 ring-white/10">
-              <BiUserCircle className="text-xl text-slate-300" />
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-950/5 ring-1 ring-emerald-950/10">
+              <BiUserCircle className="text-xl text-emerald-900/70" />
             </span>
-            <p className="truncate text-sm font-medium text-slate-300" title={book.author}>
+            <p className="truncate text-sm font-medium text-emerald-950/80" title={book.author}>
               {book.author}
             </p>
           </div>
 
-          {book.description && <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-slate-400">{book.description}</p>}
+          {book.description && <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-emerald-950/70">{book.description}</p>}
 
           {/* actions */}
-          <div className="mt-6 flex items-center gap-2 border-t border-white/10 pt-4">
+          <div className="mt-6 flex items-center gap-2 border-t border-emerald-950/10 pt-4">
             <button
               type="button"
               onClick={() => setShowModal(true)}
               title="Quick preview"
               aria-label="Quick preview"
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/5 px-3 py-2.5 text-xs font-semibold text-slate-200 ring-1 ring-white/10 transition-all duration-300 hover:bg-indigo-500/20 hover:text-white hover:ring-indigo-400/50"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-950/5 px-3 py-2.5 text-xs font-semibold text-emerald-950/80 ring-1 ring-emerald-950/10 transition-all duration-300 hover:bg-mint-500/20 hover:text-emerald-950 hover:ring-mint-500/50"
             >
               <BiShow className="text-base" />
               Preview
@@ -91,7 +91,7 @@ const BookSingleCard = ({ book, index = 0 }) => {
             <CardAction
               to={`/books/details/${book._id}`}
               title="View details"
-              className="text-emerald-300 hover:bg-emerald-500/20 hover:ring-emerald-400/50"
+              className="text-pink-700 hover:bg-pink-400/25 hover:ring-pink-500/50"
             >
               <BsInfoCircle />
             </CardAction>
@@ -99,7 +99,7 @@ const BookSingleCard = ({ book, index = 0 }) => {
             <CardAction
               to={`/books/edit/${book._id}`}
               title="Edit book"
-              className="text-amber-300 hover:bg-amber-500/20 hover:ring-amber-400/50"
+              className="text-amber-700 hover:bg-amber-400/25 hover:ring-amber-500/50"
             >
               <AiOutlineEdit />
             </CardAction>
@@ -107,7 +107,7 @@ const BookSingleCard = ({ book, index = 0 }) => {
             <CardAction
               to={`/books/delete/${book._id}`}
               title="Delete book"
-              className="text-rose-300 hover:bg-rose-500/20 hover:ring-rose-400/50"
+              className="text-rose-700 hover:bg-rose-500/20 hover:ring-rose-500/50"
             >
               <MdOutlineDelete />
             </CardAction>
@@ -125,7 +125,7 @@ const CardAction = ({ to, title, className, children }) => (
     to={to}
     title={title}
     aria-label={title}
-    className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 text-base ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
+    className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-950/5 text-base ring-1 ring-emerald-950/10 transition-all duration-300 hover:-translate-y-0.5 ${className}`}
   >
     {children}
   </Link>
