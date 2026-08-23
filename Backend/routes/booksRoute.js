@@ -1,23 +1,53 @@
-import express from 'express';
-import {Book} from '../models/BookModel.js';
+import express from "express";
+import { Book } from "../models/BookModel.js";
 
 const router = express.Router();
+
+/**
+ * Pull only the fields we allow clients to write, so a request can never
+ * overwrite _id, timestamps or anything else unexpected.
+ */
+const pickBookFields = (body = {}) => {
+  const out = {};
+
+  if (body.title !== undefined) out.title = String(body.title).trim();
+  if (body.author !== undefined) out.author = String(body.author).trim();
+  if (body.publishYear !== undefined) out.publishYear = Number(body.publishYear);
+  if (body.description !== undefined) out.description = String(body.description).trim();
+  if (body.story !== undefined) out.story = String(body.story);
+  if (body.coverImage !== undefined) out.coverImage = String(body.coverImage);
+  if (body.genre !== undefined) out.genre = String(body.genre).trim();
+
+  if (body.pages !== undefined) {
+    const n = Number(body.pages);
+    out.pages = body.pages === "" || body.pages === null || Number.isNaN(n) ? null : n;
+  }
+
+  return out;
+};
+
+/** Validate the three required fields. Returns an error string, or null. */
+const validateRequired = ({ title, author, publishYear }) => {
+  if (!title || !author || publishYear === undefined || publishYear === null) {
+    return "Send all required fields: title, author, publishYear";
+  }
+  if (Number.isNaN(Number(publishYear))) {
+    return "publishYear must be a number";
+  }
+  return null;
+};
 
 //Route for Save a new Book
 router.post("/", async (req, res) => {
   try {
-    if (!req.body.title || !req.body.author || !req.body.publishYear) {
-      return res.status(400).send({
-        message: "send all required fields : title, author, publishYear",
-      });
-    }
-    const newBook = {
-      title: req.body.title,
-      author: req.body.author,
-      publishYear: req.body.publishYear,
-    };
+    const payload = pickBookFields(req.body);
 
-    const book = await Book.create(newBook);
+    const invalid = validateRequired(payload);
+    if (invalid) {
+      return res.status(400).send({ message: invalid });
+    }
+
+    const book = await Book.create(payload);
     return res.status(201).send(book);
   } catch (error) {
     console.log(error.message);
@@ -28,7 +58,7 @@ router.post("/", async (req, res) => {
 //Route for get All Books from database:
 router.get("/", async (req, res) => {
   try {
-    const books = await Book.find({});
+    const books = await Book.find({}).sort({ createdAt: -1 });
     return res.status(200).json({
       count: books.length,
       data: books,
@@ -54,19 +84,19 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
 //Route for the Update the books
 router.put("/:id", async (req, res) => {
   try {
-    if (!req.body.title || !req.body.author || !req.body.publishYear) {
-      return res.status(400).send({
-        message: "Send all required fields: title, author, publishYear",
-      });
+    const payload = pickBookFields(req.body);
+
+    const invalid = validateRequired(payload);
+    if (invalid) {
+      return res.status(400).send({ message: invalid });
     }
 
     const { id } = req.params;
 
-    const result = await Book.findByIdAndUpdate(id, req.body, {
+    const result = await Book.findByIdAndUpdate(id, payload, {
       new: true,
       runValidators: true,
     });
