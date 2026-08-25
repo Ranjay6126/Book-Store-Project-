@@ -138,6 +138,32 @@ Run `npm run seed` inside `Backend/` to load a demo library of books, each with 
 
 ---
 
+## Deployment on Vercel
+
+The project deploys as **two Vercel projects** from this single repository — one for the API and one for the client. Both already ship with a ready-to-use `vercel.json`.
+
+### 1. Deploy the API (Backend)
+
+1. Push this repository to GitHub.
+2. In Vercel, go to **Add New → Project** and import the repository.
+3. Under **Root Directory**, select `Backend`.
+4. Add the environment variable:
+   * `MONGODB_URL` — your MongoDB Atlas connection string.
+5. In MongoDB Atlas → **Network Access** → add `0.0.0.0/0` (Vercel serverless functions use dynamic IPs).
+6. Click **Deploy** and copy the resulting URL (e.g. `https://book-store-api.vercel.app`).
+
+### 2. Deploy the Client (Frontend)
+
+1. In Vercel, go to **Add New → Project** and import the same repository again.
+2. Under **Root Directory**, select `frontend`.
+3. Add the environment variable:
+   * `VITE_API_URL` — the backend URL copied above (no trailing slash).
+4. Click **Deploy**.
+
+Vercel reads both `Backend/vercel.json` and `frontend/vercel.json` automatically, so no extra build configuration is needed. Remember to redeploy the frontend if the backend URL changes.
+
+---
+
 ## Future Improvements
 
 * User authentication and authorization
