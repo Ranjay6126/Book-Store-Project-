@@ -51,14 +51,14 @@ const BooksTable = ({ books }) => {
                 style={{ animationDelay: `${Math.min(index, 12) * 45}ms` }}
               >
                 {/* index */}
-                <td className="px-5 py-4 text-center">
+                <td className="px-3 py-3 text-center sm:px-5 sm:py-4">
                   <span className="inline-grid h-8 w-8 place-items-center rounded-lg bg-white/6 text-xs font-bold text-slate-300 ring-1 ring-white/10 tabular-nums transition group-hover:ring-indigo-400/40">
                     {index + 1}
                   </span>
                 </td>
 
                 {/* title + avatar */}
-                <td className="px-5 py-4">
+                <td className="px-3 py-3 sm:px-5 sm:py-4">
                   <div className="flex items-center gap-3">
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-linear-to-br ${
@@ -81,19 +81,19 @@ const BooksTable = ({ books }) => {
                 </td>
 
                 {/* author */}
-                <td className="px-5 py-4 text-slate-300 max-md:hidden">
+                <td className="px-3 py-3 text-slate-300 sm:px-5 sm:py-4 max-md:hidden">
                   {book.author}
                 </td>
 
                 {/* year */}
-                <td className="px-5 py-4 text-center max-md:hidden">
+                <td className="px-3 py-3 text-center sm:px-5 sm:py-4 max-md:hidden">
                   <span className="rounded-full bg-white/6 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-white/10 tabular-nums">
                     {book.publishYear}
                   </span>
                 </td>
 
                 {/* actions */}
-                <td className="px-5 py-4">
+                <td className="px-3 py-3 sm:px-5 sm:py-4">
                   <div className="flex items-center justify-center gap-2">
                     <IconAction
                       onClick={() => setPreviewBook(book)}
@@ -139,7 +139,7 @@ const BooksTable = ({ books }) => {
 const Th = ({ children, className = "" }) => (
   <th
     scope="col"
-    className={`px-5 py-4 text-[11px] font-semibold tracking-[0.14em] text-indigo-100/90 uppercase ${className}`}
+    className={`sticky top-0 z-10 bg-[#10173a]/95 px-3 py-3 text-[11px] font-semibold tracking-[0.14em] text-indigo-100/90 uppercase backdrop-blur-md sm:px-5 sm:py-4 ${className}`}
   >
     {children}
   </th>

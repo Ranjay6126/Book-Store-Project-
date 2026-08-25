@@ -38,9 +38,9 @@ const BookSingleCard = ({ book, index = 0 }) => {
           className="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-linear-to-br from-white/12 to-transparent blur-2xl"
         />
 
-        <div className="relative flex flex-1 flex-col p-6 pl-7">
+        <div className="relative flex flex-1 flex-col p-3.5 pl-4 sm:p-5 sm:pl-6">
           {/* year pill */}
-          <div className="mb-4 flex items-start justify-between gap-3">
+          <div className="mb-3 flex items-start justify-between gap-3">
             <p className="eyebrow truncate" title={book._id}>
               ID {String(book._id).slice(-8)}
             </p>
@@ -52,9 +52,9 @@ const BookSingleCard = ({ book, index = 0 }) => {
           {/* cover + title */}
           <div className="flex items-start gap-3">
             {book.coverImage ? (
-              <img src={book.coverImage} alt={`${book.title} cover`} className="h-28 w-20 shrink-0 rounded-lg object-cover shadow-lg ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-[1.03]" />
+              <img src={book.coverImage} alt={`${book.title} cover`} className="h-24 w-16 shrink-0 rounded-lg object-cover shadow-lg ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-[1.03]" />
             ) : (
-              <span className={`grid h-28 w-20 shrink-0 place-items-center rounded-xl bg-linear-to-br ${accent.spine} shadow-lg`}><PiBookOpenTextLight className="text-3xl text-white" /></span>
+              <span className={`grid h-24 w-16 shrink-0 place-items-center rounded-lg bg-linear-to-br ${accent.spine} shadow-lg`}><PiBookOpenTextLight className="text-2xl text-white" /></span>
             )}
             <div className="min-w-0">
               <h2 className="line-clamp-2 text-lg leading-snug font-bold tracking-tight text-white" title={book.title}>{book.title}</h2>
@@ -64,7 +64,7 @@ const BookSingleCard = ({ book, index = 0 }) => {
           </div>
 
           {/* author */}
-          <div className="mt-4 flex items-center gap-3">
+          <div className="mt-3 flex items-center gap-3">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/5 ring-1 ring-white/10">
               <BiUserCircle className="text-xl text-slate-300" />
             </span>
@@ -73,10 +73,10 @@ const BookSingleCard = ({ book, index = 0 }) => {
             </p>
           </div>
 
-          {book.description && <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-slate-400">{book.description}</p>}
+          {book.description && <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-400">{book.description}</p>}
 
           {/* actions */}
-          <div className="mt-6 flex items-center gap-2 border-t border-white/10 pt-4">
+          <div className="mt-auto flex items-center gap-2 border-t border-white/10 pt-3">
             <button
               type="button"
               onClick={() => setShowModal(true)}

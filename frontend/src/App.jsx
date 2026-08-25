@@ -9,11 +9,12 @@ import DeleteBook from "./pages/DeleteBook";
 
 const App = () => {
   return (
-    <div className="min-h-screen">
+    /* Fixed app shell: brand header stays in place, routes scroll inside main */
+    <div className="flex h-dvh flex-col overflow-hidden">
       {/* Books Store System brand header, shown on every screen */}
       <Navbar />
 
-      <main>
+      <main className="min-h-0 flex-1 overflow-y-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books/create" element={<CreateBooks />} />
@@ -23,12 +24,6 @@ const App = () => {
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
-
-      <footer className="border-t border-white/8 py-7">
-        <p className="text-center text-xs text-slate-500">
-          Created by Ranjay Prajapati
-        </p>
-      </footer>
     </div>
   );
 };

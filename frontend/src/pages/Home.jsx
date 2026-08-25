@@ -77,9 +77,9 @@ const Home = () => {
   }, [books, query, sortKey]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-20">
-      {/* ================= Stat strip ================= */}
-      <section className="animate-fade-up mb-9 grid gap-4 sm:grid-cols-3">
+    <div className="mx-auto flex h-full max-w-7xl flex-col px-3 pt-2 pb-3 sm:px-4 sm:pt-4 sm:pb-5">
+      {/* ================= Stat strip (fixed) ================= */}
+      <section className="animate-fade-up mb-2 grid shrink-0 grid-cols-3 gap-2 sm:mb-3.5 sm:gap-4">
         <StatCard
           icon={<PiBooksDuotone />}
           value={stats.total}
@@ -113,20 +113,20 @@ const Home = () => {
           (both on the same level, as requested)
           ============================================================ */}
       <section
-        className="animate-fade-up mb-6 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
+        className="animate-fade-up mb-2 flex shrink-0 flex-wrap items-center justify-between gap-2 sm:mb-3.5"
         style={{ animationDelay: "120ms" }}
       >
         {/* Heading */}
-        <div className="flex items-center gap-3">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-linear-to-br from-indigo-500/30 to-fuchsia-500/20 ring-1 ring-white/15">
-            <PiBooksDuotone className="text-2xl text-indigo-200" />
+        <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-linear-to-br from-indigo-500/30 to-fuchsia-500/20 ring-1 ring-white/15 sm:h-11 sm:w-11 sm:rounded-xl">
+            <PiBooksDuotone className="text-xl text-indigo-200 sm:text-2xl" />
           </span>
 
-          <div>
-            <h1 className="text-gradient text-2xl font-bold tracking-tight sm:text-3xl">
+          <div className="min-w-0">
+            <h1 className="text-gradient text-xl font-bold tracking-tight sm:text-3xl">
               Books List
             </h1>
-            <p className="mt-0.5 text-sm text-slate-400">
+            <p className="mt-0.5 truncate text-xs text-slate-400 sm:text-sm">
               {loading
                 ? "Fetching your collection…"
                 : `${visibleBooks.length} of ${stats.total} ${
@@ -137,7 +137,7 @@ const Home = () => {
         </div>
 
         {/* Toggle + add */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* segmented control */}
           <div
             role="tablist"
@@ -167,7 +167,7 @@ const Home = () => {
 
       {/* ================= Search + sort ================= */}
       <section
-        className="animate-fade-up glass mb-8 flex flex-col gap-3 rounded-2xl p-3 sm:flex-row sm:items-center"
+        className="animate-fade-up glass mb-2 flex shrink-0 flex-col gap-2 rounded-2xl p-2 sm:mb-4 sm:flex-row sm:items-center sm:gap-3 sm:p-2.5"
         style={{ animationDelay: "180ms" }}
       >
         <div className="relative flex-1">
@@ -212,7 +212,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= Content ================= */}
+      {/* ======== Content — scrolls up/down under the fixed header ======== */}
+      <div className="min-h-0 flex-1 overflow-y-auto pr-0.5 sm:pr-1">
       {loading ? (
         showType === "table" ? (
           <TableSkeleton />
@@ -256,6 +257,7 @@ const Home = () => {
       ) : (
         <BooksCard books={visibleBooks} />
       )}
+      </div>
     </div>
   );
 };
@@ -264,23 +266,21 @@ const Home = () => {
 
 const StatCard = ({ icon, value, label, tint, ring, iconColor, delay = "0ms" }) => (
   <div
-    className="glass glass-hover animate-fade-up relative overflow-hidden rounded-2xl p-5"
+    className="glass glass-hover animate-fade-up relative overflow-hidden rounded-lg px-2 py-1 sm:rounded-xl sm:px-3.5 sm:py-1.5"
     style={{ animationDelay: delay }}
   >
     <div
       aria-hidden="true"
       className={`absolute inset-0 bg-linear-to-br ${tint} opacity-70`}
     />
-    <div className="relative flex items-center gap-4">
+    <div className="relative flex min-w-0 items-center gap-1.5 sm:gap-2">
       <span
-        className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/8 text-2xl ring-1 ${ring} ${iconColor}`}
+        className={`grid h-5 w-5 shrink-0 place-items-center rounded-md bg-white/8 text-xs ring-1 sm:h-7 sm:w-7 sm:rounded-lg sm:text-base ${ring} ${iconColor}`}
       >
         {icon}
       </span>
-      <div>
-        <p className="text-2xl font-bold text-white tabular-nums">{value}</p>
-        <p className="eyebrow mt-0.5">{label}</p>
-      </div>
+      <p className="shrink-0 text-xs font-bold text-white tabular-nums sm:text-base">{value}</p>
+      <p className="eyebrow truncate text-[9px] sm:text-[11px]">{label}</p>
     </div>
   </div>
 );
@@ -291,9 +291,9 @@ const ViewTab = ({ active, onClick, icon, label }) => (
     type="button"
     aria-selected={active}
     onClick={onClick}
-    className={`relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 sm:px-5 ${
+    className={`relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:gap-2 sm:px-5 sm:py-2 sm:text-sm ${
       active
-        ? "bg-linear-to-r from-indigo-600 to-violet-600 text-white shadow-[0_10px_24px_-10px_rgba(124,58,237,0.9),inset_0_1px_0_0_rgba(255,255,255,0.25)]"
+        ? "bg-linear-to-r from-emerald-600 to-green-500 text-white shadow-[0_10px_24px_-10px_rgba(22,163,74,0.9),inset_0_1px_0_0_rgba(255,255,255,0.25)]"
         : "text-slate-400 hover:bg-white/8 hover:text-white"
     }`}
   >
