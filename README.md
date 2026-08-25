@@ -1,5 +1,11 @@
 # Book Store Project
 
+https://book-store-project-tuec.vercel.app/
+
+<img width="1882" height="886" alt="image" src="https://github.com/user-attachments/assets/ef454b96-6491-4ffc-b309-e0e2e4c9d7ef" />
+<img width="1911" height="887" alt="image" src="https://github.com/user-attachments/assets/86b50ed2-0caf-4176-a1f5-c26f06c4e5d8" />
+
+
 A full stack Book Store application built using the MERN stack. The project provides a RESTful API for managing books and a modern React frontend for browsing, adding, editing, and deleting books — now with rich book details like descriptions, story previews, genres, and cover images.
 
 ---
