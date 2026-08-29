@@ -10,7 +10,7 @@ import DeleteBook from "./pages/DeleteBook";
 const App = () => {
   return (
     /* Fixed app shell: brand header stays in place, routes scroll inside main */
-    <div className="flex h-dvh flex-col overflow-hidden">
+    <div className="flex h-dvh flex-col overflow-hidden bg-[#dce8d6]">
       {/* Books Store System brand header, shown on every screen */}
       <Navbar />
 
