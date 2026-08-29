@@ -90,7 +90,7 @@ const ShowBook = () => {
           />
 
           {/* hero */}
-          <div className="relative border-b border-white/10 bg-linear-to-br from-white/6 to-transparent p-7 sm:p-9">
+          <div className="relative border-b border-[#b8cbb5] bg-[#f4fcf1] p-7 sm:p-9">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -top-20 -right-12 h-52 w-52 rounded-full bg-emerald-500/18 blur-3xl"
@@ -100,13 +100,13 @@ const ShowBook = () => {
               {book.coverImage ? <img src={book.coverImage} alt={`${book.title} cover`} className="h-24 w-16 shrink-0 rounded-lg object-cover shadow-lg ring-1 ring-white/20" /> : <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-linear-to-br from-emerald-500 to-teal-600 shadow-lg"><PiBookOpenTextLight className="text-3xl text-white" /></span>}
 
               <div className="min-w-0">
-                <h2 className="text-2xl leading-tight font-bold tracking-tight text-white">
+                <h2 className="text-2xl leading-tight font-bold tracking-tight text-black">
                   {book.title}
                 </h2>
-                <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-400">
+                <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-black">
                   <BiUserCircle className="text-base" />
                   {book.author}
-                  <span className="text-slate-600">•</span>
+                  <span className="text-black">•</span>
                   <span className="tabular-nums">{book.publishYear}</span>
                 </p>
               </div>
@@ -156,7 +156,7 @@ const ShowBook = () => {
             />
           </dl>
 
-          {(book.description || book.story) && <section className="border-t border-white/10 p-7 sm:p-9"><h3 className="text-lg font-semibold text-white">About this book</h3>{book.description && <p className="mt-2 text-sm leading-relaxed text-slate-300">{book.description}</p>}{book.story && <div className="mt-5 space-y-5"><h3 className="text-lg font-semibold text-white">Story preview</h3>{book.story.split(/\n\s*---PAGE---\s*\n/).map((page, index) => <article key={index} className="rounded-xl bg-white/4 p-4 ring-1 ring-white/8"><p className="eyebrow">Page {index + 1}</p><p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-300">{page}</p></article>)}</div>}</section>}
+          {(book.description || book.story) && <section className="border-t border-[#b8cbb5] p-7 sm:p-9"><h3 className="text-lg font-bold text-black">About this book</h3>{book.description && <p className="mt-2 text-sm leading-relaxed text-black">{book.description}</p>}{book.story && <div className="mt-5 space-y-5"><h3 className="text-lg font-bold text-black">Story preview</h3>{book.story.split(/\n\s*---PAGE---\s*\n/).map((page, index) => <article key={index} className="rounded-xl border border-[#a9c0a5] bg-[#f6fff3] p-4 shadow-sm"><p className="eyebrow !text-black">Page {index + 1}</p><p className="mt-2 whitespace-pre-line text-sm leading-7 text-black">{page}</p></article>)}</div>}</section>}
 
           {/* actions */}
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 p-7 pt-6 sm:px-9">
@@ -182,17 +182,17 @@ const ShowBook = () => {
 };
 
 const Row = ({ icon, label, value, iconColor, mono = false }) => (
-  <div className="flex items-start gap-3 rounded-xl bg-white/4 px-4 py-3.5 ring-1 ring-white/8 transition-colors duration-300 hover:bg-white/6">
+  <div className="flex items-start gap-3 rounded-xl border border-[#a9c0a5] bg-[#f6fff3] px-4 py-3.5 shadow-sm transition-colors duration-300 hover:bg-[#e6f4e2]">
     <span
-      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white/6 text-xl ring-1 ring-white/10 ${iconColor}`}
+      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#e0efdc] text-xl text-black ring-1 ring-[#a7bda4] ${iconColor}`}
     >
       {icon}
     </span>
     <div className="min-w-0">
       <dt className="eyebrow">{label}</dt>
       <dd
-        className={`mt-0.5 text-sm font-semibold text-slate-100 ${
-          mono ? "font-mono text-xs break-all text-slate-400" : ""
+        className={`mt-0.5 text-sm font-semibold text-black ${
+          mono ? "font-mono text-xs break-all text-black" : ""
         }`}
       >
         {value}

@@ -24,7 +24,7 @@ const TextField = ({
     <div>
       <label
         htmlFor={id}
-        className="mb-2 block text-sm font-semibold text-slate-300"
+        className="mb-2 block text-sm font-semibold text-[#425046]"
       >
         {label}
       </label>
@@ -55,7 +55,7 @@ const TextField = ({
         <p
           id={errorId}
           role="alert"
-          className="animate-fade-in mt-2 flex items-center gap-1.5 text-xs font-medium text-rose-300"
+          className="animate-fade-in mt-2 flex items-center gap-1.5 text-xs font-medium text-[#a85145]"
         >
           <MdErrorOutline className="shrink-0 text-sm" />
           {error}

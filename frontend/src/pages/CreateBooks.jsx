@@ -94,10 +94,6 @@ const CreateBooks = () => {
     reader.readAsDataURL(file);
   };
 
-  const onKeyDown = (e) => {
-    if (e.key === "Enter" && !loading) handleSaveBook();
-  };
-
   return (
     <div className="mx-auto max-w-3xl px-4 pb-20">
       <BackButton />
@@ -115,7 +111,6 @@ const CreateBooks = () => {
       <div
         className="glass animate-fade-up relative overflow-hidden rounded-3xl p-7 sm:p-9"
         style={{ animationDelay: "80ms" }}
-        onKeyDown={onKeyDown}
       >
         <span
           aria-hidden="true"
@@ -162,18 +157,18 @@ const CreateBooks = () => {
           />
 
           <div>
-            <label htmlFor="coverImage" className="mb-2 block text-sm font-semibold text-slate-300">
+            <label htmlFor="coverImage" className="mb-2 block text-sm font-bold text-black">
               Upload book cover
             </label>
-            <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-dashed border-white/15 bg-white/4 p-4">
+            <div className="flex flex-wrap items-center gap-4 rounded-2xl border-2 border-[#98ae96] bg-[#f7fff5] p-4 shadow-sm">
               {coverImage ? (
                 <img src={coverImage} alt="Selected book cover" className="h-28 w-20 rounded-lg object-cover ring-1 ring-white/15" />
               ) : (
-                <span className="grid h-28 w-20 place-items-center rounded-lg bg-white/6 text-3xl text-slate-500 ring-1 ring-white/10"><MdOutlineImage /></span>
+                <span className="grid h-28 w-20 place-items-center rounded-lg bg-[#e0efdc] text-3xl text-black ring-1 ring-[#a7bda4]"><MdOutlineImage /></span>
               )}
               <div>
-                <input id="coverImage" type="file" accept="image/*" onChange={handleCoverChange} className="block text-sm text-slate-300 file:mr-3 file:rounded-lg file:border-0 file:bg-indigo-500/25 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-indigo-100 hover:file:bg-indigo-500/40" />
-                <p className="mt-2 text-xs text-slate-500">Optional JPG, PNG, or WebP, up to 3 MB.</p>
+                <input id="coverImage" type="file" accept="image/*" onChange={handleCoverChange} className="block text-sm text-black file:mr-3 file:rounded-lg file:border file:border-[#5f828b] file:bg-[#cde7f0] file:px-3 file:py-2 file:text-sm file:font-bold file:text-black hover:file:bg-[#afd5e2]" />
+                <p className="mt-2 text-xs font-medium text-black">Optional JPG, PNG, or WebP, up to 3 MB.</p>
               </div>
             </div>
           </div>
@@ -196,7 +191,6 @@ const CreateBooks = () => {
             >
               {loading ? (
                 <>
-                  <span className="animate-spin-slow h-4 w-4 rounded-full border-2 border-white/30 border-t-white" />
                   Saving…
                 </>
               ) : (
@@ -216,9 +210,6 @@ const CreateBooks = () => {
               Cancel
             </button>
 
-            <p className="ml-auto hidden text-xs text-slate-500 sm:block">
-              Press <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-sans">Enter</kbd> to save
-            </p>
           </div>
         </div>
       </div>

@@ -1,30 +1,6 @@
-/**
- * Orbiting dual-ring loader.
- */
 const Spinner = ({ label = "Loading books…" }) => {
   return (
-    <div
-      role="status"
-      aria-live="polite"
-      className="animate-fade-in flex flex-col items-center justify-center gap-5 py-16"
-    >
-      <div className="relative h-16 w-16">
-        {/* soft halo */}
-        <span className="absolute inset-0 rounded-full bg-indigo-500/25 blur-xl" />
-
-        {/* outer ring */}
-        <span className="animate-spin-slow absolute inset-0 rounded-full border-2 border-white/10 border-t-indigo-400 border-r-fuchsia-400" />
-
-        {/* inner counter ring */}
-        <span
-          className="animate-spin-slow absolute inset-3 rounded-full border-2 border-white/10 border-b-sky-400"
-          style={{ animationDirection: "reverse", animationDuration: "1s" }}
-        />
-
-        {/* core */}
-        <span className="absolute inset-[38%] rounded-full bg-linear-to-br from-indigo-400 to-fuchsia-400 shadow-[0_0_18px_rgba(129,140,248,0.9)]" />
-      </div>
-
+    <div role="status" aria-live="polite" className="flex items-center justify-center py-16">
       <p className="text-sm font-medium tracking-wide text-slate-400">{label}</p>
     </div>
   );
@@ -35,11 +11,10 @@ const Spinner = ({ label = "Loading books…" }) => {
  */
 export const CardSkeleton = ({ count = 8 }) => (
   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-    {Array.from({ length: count }).map((_, i) => (
+    {Array.from({ length: count }, (_, i) => i).map((i) => (
       <div
         key={i}
-        className="glass animate-fade-up rounded-2xl p-6"
-        style={{ animationDelay: `${i * 60}ms` }}
+        className="glass rounded-2xl p-6"
       >
         <div className="skeleton h-3 w-20" />
         <div className="mt-5 flex items-center gap-3">
@@ -63,11 +38,10 @@ export const TableSkeleton = ({ rows = 6 }) => (
   <div className="glass overflow-hidden rounded-2xl">
     <div className="skeleton h-14 w-full rounded-none" />
     <div className="divide-y divide-white/5">
-      {Array.from({ length: rows }).map((_, i) => (
+      {Array.from({ length: rows }, (_, i) => i).map((i) => (
         <div
           key={i}
-          className="animate-fade-up flex items-center gap-4 px-6 py-5"
-          style={{ animationDelay: `${i * 70}ms` }}
+          className="flex items-center gap-4 px-6 py-5"
         >
           <div className="skeleton h-8 w-8 rounded-lg" />
           <div className="skeleton h-4 flex-1" />

@@ -133,10 +133,6 @@ const EditBook = () => {
     setStoryPages((current) => current.map((page, pageIndex) => (pageIndex === index ? value : page)));
   };
 
-  const onKeyDown = (e) => {
-    if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && !saving) handleEditBook();
-  };
-
   return (
     <div className="mx-auto max-w-3xl px-4 pb-20">
       <BackButton />
@@ -156,10 +152,7 @@ const EditBook = () => {
           <Spinner label="Loading book details…" />
         </div>
       ) : (
-        <div
-          className="glass animate-fade-up relative overflow-hidden rounded-3xl p-7 sm:p-9"
-          onKeyDown={onKeyDown}
-        >
+        <div className="glass animate-fade-up relative overflow-hidden rounded-3xl p-7 sm:p-9">
           <span
             aria-hidden="true"
             className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-amber-400 via-orange-400 to-rose-400"
@@ -202,38 +195,38 @@ const EditBook = () => {
             />
 
             <div>
-              <label htmlFor="coverImage" className="mb-2 block text-sm font-semibold text-slate-300">Change book cover</label>
-              <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-dashed border-white/15 bg-white/4 p-4">
+              <label htmlFor="coverImage" className="mb-2 block text-sm font-bold text-black">Change book cover</label>
+              <div className="flex flex-wrap items-center gap-4 rounded-2xl border-2 border-[#98ae96] bg-[#f7fff5] p-4 shadow-sm">
                 {coverImage ? (
                   <img src={coverImage} alt="Current book cover" className="h-32 w-24 rounded-lg object-cover shadow-md ring-1 ring-white/15" />
                 ) : (
-                  <span className="grid h-32 w-24 place-items-center rounded-lg bg-white/6 text-3xl text-slate-500 ring-1 ring-white/10"><MdOutlineImage /></span>
+                  <span className="grid h-32 w-24 place-items-center rounded-lg bg-[#e0efdc] text-3xl text-black ring-1 ring-[#a7bda4]"><MdOutlineImage /></span>
                 )}
                 <div className="space-y-2">
-                  <input id="coverImage" type="file" accept="image/*" onChange={handleCoverChange} className="block text-sm text-slate-300 file:mr-3 file:rounded-lg file:border-0 file:bg-amber-500/25 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-amber-100 hover:file:bg-amber-500/40" />
-                  {coverImage && <button type="button" onClick={() => setCoverImage("")} className="text-xs font-medium text-rose-300 hover:text-rose-200">Remove cover image</button>}
-                  <p className="text-xs text-slate-500">JPG, PNG, or WebP · maximum 3 MB.</p>
+                  <input id="coverImage" type="file" accept="image/*" onChange={handleCoverChange} className="block text-sm text-black file:mr-3 file:rounded-lg file:border file:border-[#9b7433] file:bg-[#f5dcaa] file:px-3 file:py-2 file:text-sm file:font-bold file:text-black hover:file:bg-[#eac983]" />
+                  {coverImage && <button type="button" onClick={() => setCoverImage("")} className="text-xs font-bold text-[#6b1d16] hover:text-black">Remove cover image</button>}
+                  <p className="text-xs font-medium text-black">JPG, PNG, or WebP · maximum 3 MB.</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <label htmlFor="description" className="mb-2 block text-sm font-semibold text-slate-300">Book description</label>
+              <label htmlFor="description" className="mb-2 block text-sm font-bold text-black">Book description</label>
               <div className="relative">
                 <MdOutlineDescription className="pointer-events-none absolute top-4 left-4 text-lg text-slate-500" />
                 <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} rows={4} maxLength={1000} placeholder="Write a short description of this book…" className="field resize-y py-3 pr-4 pl-11" />
               </div>
             </div>
 
-            <section className="rounded-2xl border border-white/10 bg-white/3 p-5 sm:p-6">
+            <section className="rounded-2xl border-2 border-[#98ae96] bg-[#f7fff5] p-5 sm:p-6">
               <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/15 text-xl text-amber-200 ring-1 ring-amber-400/25"><MdOutlineMenuBook /></span>
-                <div><h2 className="font-semibold text-white">Edit story preview</h2><p className="mt-0.5 text-xs text-slate-500">Each section is shown as one page in Quick Preview.</p></div>
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f5dcaa] text-xl text-black ring-1 ring-[#b8944d]"><MdOutlineMenuBook /></span>
+                <div><h2 className="font-bold text-black">Edit story preview</h2><p className="mt-0.5 text-xs font-medium text-black">Each section is shown as one page in Quick Preview.</p></div>
               </div>
               <div className="mt-5 space-y-5">
                 {storyPages.map((storyPage, index) => (
                   <div key={index}>
-                    <label htmlFor={`storyPage${index + 1}`} className="mb-2 block text-sm font-semibold text-slate-300">Story preview · Page {index + 1}</label>
+                    <label htmlFor={`storyPage${index + 1}`} className="mb-2 block text-sm font-bold text-black">Story preview · Page {index + 1}</label>
                     <textarea id={`storyPage${index + 1}`} value={storyPage} onChange={(e) => updateStoryPage(index, e.target.value)} rows={6} placeholder={`Write the preview for page ${index + 1}…`} className="field resize-y px-4 py-3" />
                   </div>
                 ))}
@@ -249,7 +242,6 @@ const EditBook = () => {
               >
                 {saving ? (
                   <>
-                    <span className="animate-spin-slow h-4 w-4 rounded-full border-2 border-white/30 border-t-white" />
                     Updating…
                   </>
                 ) : (
@@ -259,8 +251,6 @@ const EditBook = () => {
                   </>
                 )}
               </button>
-
-              <p className="ml-auto hidden text-xs text-slate-500 sm:block">Press <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-sans">Ctrl</kbd> + <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-sans">Enter</kbd> to update</p>
 
               <button
                 type="button"
